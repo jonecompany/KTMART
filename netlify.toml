@@ -1,0 +1,44 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "upgrade-insecure-requests"
+
+# Force all custom-domain HTTP traffic to HTTPS
+[[redirects]]
+  from = "http://ktmartshop.co.kr/*"
+  to = "https://ktmartshop.co.kr/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.ktmartshop.co.kr/*"
+  to = "https://ktmartshop.co.kr/:splat"
+  status = 301
+  force = true
+
+# Canonicalize www HTTPS to apex HTTPS
+[[redirects]]
+  from = "https://www.ktmartshop.co.kr/*"
+  to = "https://ktmartshop.co.kr/:splat"
+  status = 301
+  force = true
+
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-store, max-age=0"
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+  for = "/.netlify/functions/site-config"
+  [headers.values]
+    Cache-Control = "no-store, max-age=0"

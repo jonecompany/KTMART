@@ -1,0 +1,9 @@
+{
+  "name": "ktmart-netlify-admin",
+  "private": true,
+  "version": "1.0.0",
+  "description": "KT마트 사이트 + Netlify 관리자 CMS",
+  "dependencies": {
+    "@netlify/blobs": "11.0.1"
+  }
+}
