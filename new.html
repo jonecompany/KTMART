@@ -1,1 +1,19 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>가장 빠르게 만나는 신제품 | KT마트</title><link rel="stylesheet" href="assets/styles.css"></head><body><main><section class="page-hero"><div class="container"><div class="section-eyebrow">신제품</div><h1>가장 빠르게 만나는 신제품</h1><p class="section-desc">iPhone 18 사전예약과 Galaxy Fold8·Flip8 등 최신 모델 상담을 접수합니다.</p></div></section><section class="products-section"><div class="container"><div class="toolbar"><div class="filter-row"><button class="tab active" data-filter="all">전체</button><button class="tab" data-filter="samsung">삼성</button><button class="tab" data-filter="apple">애플</button></div><select class="sort-select" id="sort"><option value="recommend">추천순</option><option value="low">월 납부 낮은순</option><option value="high">월 납부 높은순</option></select></div><div class="product-grid" id="productGrid"></div></div></section></main><script src="assets/data.js"></script><script src="assets/app.js"></script><script>base('new');let list=[...KTMART_PRODUCTS];renderProducts('#productGrid',list);setupFilters();document.getElementById('sort').onchange=e=>{let v=e.target.value;list=[...KTMART_PRODUCTS].sort((a,b)=>v==='low'?((a.price||999999)-(b.price||999999)):v==='high'?(b.price-a.price):0);renderProducts('#productGrid',list);setupFilters();}</script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>신제품 | KT마트</title>
+  <meta name="description" content="아이폰18 Pro·Pro Max, 갤럭시 Z Fold8·Flip8, Galaxy S26 등 KT마트 신제품 라인업을 확인하세요.">
+  <link rel="canonical" href="https://ktmartshop.co.kr/new.html">
+  <link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/iphone18.css">
+</head>
+<body>
+<main>
+  <section class="new-product-hero"><div class="container new-product-hero-grid"><div><span>NEW ARRIVALS</span><h1>신제품은 빠르게,<br><strong>상담은 더 쉽게.</strong></h1><p>아이폰18 Pro 사전예약부터 갤럭시 폴더블, S26 시리즈까지 지금 문의 많은 최신 모델을 모았습니다.</p><div><a class="launch-btn launch-btn-primary" href="iphone18.html">아이폰18 Pro 보기</a><a class="launch-btn launch-btn-ghost" href="consult.html">신제품 상담 신청</a></div></div><div class="new-mini-device"><i></i><i></i><i></i><b>iPhone 18 Pro</b></div></div></section>
+  <section class="catalog-preorder"><div class="container"><div class="catalog-preorder-card"><div><span>PRE-ORDER</span><h2>iPhone 18 Pro · Pro Max 사전예약</h2><p>공식 일정과 주요 스펙을 먼저 확인하고 바로 상담 접수할 수 있습니다.</p></div><a class="launch-btn launch-btn-primary" href="iphone18.html">전용 페이지</a></div></div></section>
+  <section class="products-section"><div class="container"><div class="toolbar"><div class="filter-row"><button class="tab active" data-filter="all">전체</button><button class="tab" data-filter="samsung">삼성</button><button class="tab" data-filter="apple">애플</button></div><select class="sort-select" id="sort"><option value="recommend">추천순</option><option value="low">월 납부 낮은순</option><option value="high">월 납부 높은순</option></select></div><div class="product-grid" id="productGrid"></div></div></section>
+</main>
+<script src="assets/data.js"></script><script src="assets/catalog-extra.js"></script><script src="assets/app.js"></script>
+<script>base('new');let list=KTMART_PRODUCTS.filter(p=>p.newRelease);function paint(v='recommend'){let arr=[...list];if(v==='low')arr.sort((a,b)=>(a.price||999999)-(b.price||999999));if(v==='high')arr.sort((a,b)=>(b.price||0)-(a.price||0));renderProducts('#productGrid',arr);setupFilters()}paint();document.getElementById('sort').onchange=e=>paint(e.target.value);</script>
+</body></html>
